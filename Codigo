@@ -1,0 +1,488 @@
+//AUTOR: Luis A O Cauro
+//FECHA: 13-08-2013   21:12
+//PINES: 3-Led, 5-Led, 7-Zumbador
+//DESCRIPCION: El pin 3 indica el PUNTO y el 5 indica RAYA y el 7 es el que hara sonar el ZUMBADOR para usar el programa pulsar Ctrl + Mayusculas + M o abrir el MONITOR SERIAL
+//VTD:9600 baud (Baudios)
+
+int ledPunto = 3;
+int ledRaya = 5;
+int zumbador = 7;
+int Tono = 1480; //FS6
+
+void Punto()
+{
+delay(200);
+
+digitalWrite(ledPunto, HIGH);
+
+tone(zumbador, Tono, 0);
+delay(30);
+noTone(zumbador);
+
+digitalWrite(ledPunto,LOW);
+}
+
+void Raya()
+{
+delay(200);
+
+digitalWrite(ledRaya,HIGH);
+
+tone(zumbador, Tono, 0);
+delay(200);
+noTone(zumbador);
+
+digitalWrite(ledRaya,LOW);
+}
+
+void setup()
+{
+Serial.begin(9600);
+
+pinMode(ledPunto, OUTPUT);
+pinMode(ledRaya,OUTPUT);
+}
+
+void loop() {
+// Leyendo el Sensor:
+if (Serial.available() > 0) {
+int informacion = Serial.read();
+
+delay(400);
+switch (informacion) {
+
+case 'a':
+Punto();
+Raya();
+break;
+
+case 'b':
+Raya();
+Punto();
+Punto();
+Punto();
+break;
+
+case 'c':
+Raya();
+Punto();
+Raya();
+Punto();
+break;
+
+case 'd':
+Raya();
+Punto();
+Punto();
+break;
+
+case 'e':
+Punto();
+break;
+
+case 'f':
+Punto();
+Punto();
+Raya();
+Punto();
+break;
+
+case 'g':
+Raya();
+Raya();
+Punto();
+break;
+
+case 'h':
+Punto();
+Punto();
+Punto();
+Punto();
+
+break;
+
+case 'i':
+Punto();
+Punto();
+break;
+
+case 'j':
+Punto();
+Raya();
+Raya();
+Raya();
+break;
+
+case 'k':
+Raya();
+Punto();
+Raya();
+break;
+
+case 'l':
+Punto();
+Raya();
+Punto();
+Punto();
+break;
+
+case 'm':
+Raya();
+Raya();
+break;
+
+case 'n':
+Raya();
+Punto();
+break;
+
+case 'ñ'://por definir
+Raya();
+Raya();
+Raya();
+Raya();
+Raya();
+break;
+
+case 'o':
+Raya();
+Raya();
+Raya();
+break;
+
+case 'p':
+Punto();
+Raya();
+Raya();
+Punto();
+break;
+
+case 'q':
+Raya();
+Raya();
+Punto();
+Raya();
+break;
+
+case 'r':
+Punto();
+Raya();
+Punto();
+break;
+
+case 's':
+Punto();
+Punto();
+Punto();
+break;
+
+case 't':
+Raya();
+break;
+
+case 'u':
+Punto();
+Punto();
+Raya();
+break;
+
+case 'v':
+Punto();
+Punto();
+Punto();
+Raya();
+break;
+
+case 'w':
+Punto();
+Raya();
+Raya();
+break;
+
+case 'x':
+Raya();
+Punto();
+Punto();
+Raya();
+break;
+
+case 'y':
+Raya();
+Punto();
+Raya();
+Raya();
+break;
+
+case 'z':
+Raya();
+Raya();
+Punto();
+Punto();
+break;
+
+//MAYUSCULAS
+
+case 'A':
+Punto();
+Raya();
+break;
+
+case 'B':
+Raya();
+Punto();
+Punto();
+Punto();
+break;
+
+case 'C':
+Raya();
+Punto();
+Raya();
+Punto();
+break;
+
+case 'D':
+Raya();
+Punto();
+Punto();
+break;
+
+case 'E':
+Punto();
+break;
+
+case 'F':
+Punto();
+Punto();
+Raya();
+Punto();
+break;
+
+case 'G':
+Raya();
+Raya();
+Punto();
+break;
+
+case 'H':
+Punto();
+Punto();
+Punto();
+Punto();
+
+break;
+
+case 'I':
+Punto();
+Punto();
+break;
+
+case 'J':
+Punto();
+Raya();
+Raya();
+Raya();
+break;
+
+case 'K':
+Raya();
+Punto();
+Raya();
+break;
+
+case 'L':
+Punto();
+Raya();
+Punto();
+Punto();
+break;
+
+case 'M':
+Raya();
+Raya();
+break;
+
+case 'N':
+Raya();
+Punto();
+break;
+
+case 'Ñ'://por definir
+Raya();
+Raya();
+Raya();
+Raya();
+Raya();
+break;
+
+case 'O':
+Raya();
+Raya();
+Raya();
+break;
+
+case 'P':
+Punto();
+Raya();
+Raya();
+Punto();
+break;
+
+case 'Q':
+Raya();
+Raya();
+Punto();
+Raya();
+break;
+
+case 'R':
+Punto();
+Raya();
+Punto();
+break;
+
+case 'S':
+Punto();
+Punto();
+Punto();
+break;
+
+case 'T':
+Raya();
+break;
+
+case 'U':
+Punto();
+Punto();
+Raya();
+break;
+
+case 'V':
+Punto();
+Punto();
+Punto();
+Raya();
+break;
+
+case 'W':
+Punto();
+Raya();
+Raya();
+break;
+
+case 'X':
+Raya();
+Punto();
+Punto();
+Raya();
+break;
+
+case 'Y':
+Raya();
+Punto();
+Raya();
+Raya();
+break;
+
+case 'Z':
+Raya();
+Raya();
+Punto();
+Punto();
+break;
+
+//Signos y Puntuaciones
+
+case ' ':
+delay(800);
+break;
+
+//Numeracion
+
+case '0':
+Raya();
+Raya();
+Raya();
+Raya();
+Raya();
+break;
+
+case '1':
+Punto();
+Raya();
+Raya();
+Raya();
+Raya();
+break;
+
+case '2':
+Punto();
+Punto();
+Raya();
+Raya();
+Raya();
+break;
+
+case '3':
+Punto();
+Punto();
+Punto();
+Raya();
+Raya();
+break;
+
+case '4':
+Punto();
+Punto();
+Punto();
+Punto();
+Raya();
+break;
+
+case '5':
+Punto();
+Punto();
+Punto();
+Punto();
+Punto();
+break;
+
+case '6':
+Raya();
+Punto();
+Punto();
+Punto();
+Punto();
+break;
+
+case '7':
+Raya();
+Raya();
+Punto();
+Punto();
+Punto();
+break;
+
+case '8':
+Raya();
+Raya();
+Raya();
+Punto();
+Punto();
+break;
+
+case '9':
+Raya();
+Raya();
+Raya();
+Raya();
+Punto();
+break;
+
+default:
+break;
+}
+
+Serial.write(informacion); //Imprime los Caracteres a Procesar
+}
+}
